@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class Cronometro {
 
-	private static final String ANNONYMOUS = "annonymous";
+	private static final String ANONIMO = "anonimo";
 
 	private Precision precision;
-	private Map<String, List<Long>> valores = new HashMap<String, List<Long>>();
+	private Map<String, List<Long>> mediciones = new HashMap<String, List<Long>>();
 
 	public Cronometro(Precision precision) {
 		this.precision = precision;
@@ -19,29 +19,29 @@ public class Cronometro {
 	}
 
 	public void clic() {
-		clic(ANNONYMOUS);
+		clic(ANONIMO);
 	}
 
-	public void clic(String key) {
-		List<Long> mediciones = valores.get(key);
+	public void clic(String clave) {
+		List<Long> medicionesPorClave = mediciones.get(clave);
 
-		if (mediciones == null) {
-			mediciones = new LinkedList<Long>();
+		if (medicionesPorClave == null) {
+			medicionesPorClave = new LinkedList<Long>();
 		}
-		mediciones.add(System.nanoTime());
-		valores.put(key, mediciones);
+		medicionesPorClave.add(System.nanoTime());
+		mediciones.put(clave, medicionesPorClave);
 	}
 
-	public Resultados getResultado(String key) {
-		return procesar(key);
+	public Mediciones getMediciones(String clave) {
+		return procesar(clave);
 	}
 
-	public Resultados getResultado() {
-		return getResultado(ANNONYMOUS);
+	public Mediciones getMediciones() {
+		return getMediciones(ANONIMO);
 	}
 
-	private Resultados procesar(String key) {
-		return new Resultados(valores.get(key), this.precision);
+	private Mediciones procesar(String key) {
+		return new Mediciones(mediciones.get(key), this.precision);
 	}
 
 }
