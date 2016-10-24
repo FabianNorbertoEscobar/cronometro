@@ -56,12 +56,27 @@ public class Cronometro {
 		valores.put(key, a);
 	}
 
-	public List<Double> getResultados(String key) {
+	public List<Double> getParciales(String key) {
 		return procesar(key);
 	}
 	
-	public List<Double> getResultados() {
-		return getResultados(ANNONYMOUS);
+	public List<Double> getParciales() {
+		return getParciales(ANNONYMOUS);
+	}
+	
+	public Double getTotal(String key) {
+		return total(key);
+	}
+	
+	public Double getTotal() {
+		return total(ANNONYMOUS);
+	}
+	
+	private Double total(String key) {
+		List<Long> valoresTmp = valores.get(key);
+		Long ultimo = valoresTmp.get(valoresTmp.size() - 1);
+		Long primero = valoresTmp.get(0);
+		return (double) ultimo - primero;
 	}
 	
 	private List<Double> procesar(String key) {
