@@ -14,11 +14,10 @@ public enum Precision {
 	}
 
 	public Double desdeNano(long nano) {
-		return (((double) (nano))/this.factor);
+		return (((double) (nano)) / this.factor);
 	}
 
 	public String formatear(long cantidad) {
-		// TODO Auto-generated method stub
 		return cantidad + " " + this.simbolo;
 	}
 }

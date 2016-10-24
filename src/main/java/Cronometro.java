@@ -43,5 +43,4 @@ public class Cronometro {
 	private Mediciones procesar(String key) {
 		return new Mediciones(mediciones.get(key), this.precision);
 	}
-
 }

@@ -16,7 +16,7 @@ public class Mediciones {
 			}
 			previo = medicion;
 		}
-		
+
 		this.total = (double) previo - capturas.get(0);
 	}
 
@@ -27,5 +27,4 @@ public class Mediciones {
 	public Double getTotal() {
 		return this.total;
 	}
-	
 }
