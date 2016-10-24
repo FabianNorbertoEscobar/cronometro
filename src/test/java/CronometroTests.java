@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TimerTests {
+public class CronometroTests {
 
 	@Test
 	public void funcionamientoStandard() throws InterruptedException {
