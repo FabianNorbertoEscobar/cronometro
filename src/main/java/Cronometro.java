@@ -18,35 +18,11 @@ public class Cronometro {
 		this(Precision.SEGUNDOS);
 	}
 
-	public void comenzar() {
-		click();
+	public void clic() {
+		clic(ANNONYMOUS);
 	}
 
-	public void finalizar() {
-		click();
-	}
-
-	public void vuelta() {
-		click();
-	}
-
-	public void comenzar(String key) {
-		click(key);
-	}
-
-	public void finalizar(String key) {
-		click(key);
-	}
-
-	public void vuelta(String key) {
-		click(key);
-	}
-
-	private void click() {
-		click(ANNONYMOUS);
-	}
-
-	private void click(String key) {
+	public void clic(String key) {
 		List<Long> mediciones = valores.get(key);
 
 		if (mediciones == null) {

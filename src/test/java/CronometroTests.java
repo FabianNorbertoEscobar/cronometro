@@ -6,21 +6,21 @@ public class CronometroTests {
 	@Test
 	public void funcionamientoStandard() throws InterruptedException {
 		Cronometro crono = new Cronometro(Precision.SEGUNDOS);
-		crono.comenzar();
+		crono.clic();
 		Thread.sleep(1000);
-		crono.finalizar();
+		crono.clic();
 		Assert.assertTrue(crono.getResultado().get(0) >= 1.0);
 		Assert.assertTrue(crono.getResultado().getTotal() >= 1.0);
 	}
 	
 	@Test
-	public void funcionamientoConVueltas() throws InterruptedException {
+	public void funcionamientoConclicks() throws InterruptedException {
 		Cronometro crono = new Cronometro(Precision.SEGUNDOS);
-		crono.comenzar();
+		crono.clic();
 		Thread.sleep(1000);
-		crono.vuelta();
+		crono.clic();
 		Thread.sleep(500);
-		crono.finalizar();
+		crono.clic();
 		Assert.assertTrue(crono.getResultado().get(0) >= 1.0);
 		Assert.assertTrue(crono.getResultado().get(1) >= 0.5);
 	}
@@ -28,16 +28,16 @@ public class CronometroTests {
 	@Test
 	public void dosCronometrosEnUno() throws InterruptedException {
 		Cronometro crono = new Cronometro(Precision.SEGUNDOS);
-		crono.comenzar("uno");
+		crono.clic("uno");
 		Thread.sleep(1000);
-		crono.vuelta("uno");
+		crono.clic("uno");
 		Thread.sleep(500);
-		crono.comenzar("dos");
+		crono.clic("dos");
 		Thread.sleep(500);
-		crono.vuelta("dos");
+		crono.clic("dos");
 		Thread.sleep(1000);
-		crono.finalizar("dos");
-		crono.finalizar("uno");
+		crono.clic("dos");
+		crono.clic("uno");
 		Assert.assertTrue(crono.getResultado("uno").get(0) >= 1.0);
 		Assert.assertTrue(crono.getResultado("uno").get(1) >= 1.0);
 		Assert.assertTrue(crono.getResultado("dos").get(0) >= 0.5);
@@ -47,11 +47,11 @@ public class CronometroTests {
 	@Test
 	public void queMideTiempoTotal() throws InterruptedException {
 		Cronometro crono = new Cronometro(Precision.SEGUNDOS);
-		crono.comenzar("uno");
+		crono.clic("uno");
 		Thread.sleep(1000);
-		crono.vuelta("uno");
+		crono.clic("uno");
 		Thread.sleep(500);
-		crono.finalizar("uno");
+		crono.clic("uno");
 		Assert.assertTrue(crono.getResultado("uno").getTotal() >= 1.5);
 	}
 
