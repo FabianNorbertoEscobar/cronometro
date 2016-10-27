@@ -10,7 +10,7 @@ public class Cronometro {
 	private Precision precision;
 	private Map<String, List<Long>> mediciones = new HashMap<String, List<Long>>();
 
-	public Cronometro(Precision precision) {
+	public Cronometro(final Precision precision) {
 		this.precision = precision;
 	}
 
@@ -22,7 +22,7 @@ public class Cronometro {
 		clic(ANONIMO);
 	}
 
-	public void clic(String clave) {
+	public void clic(final String clave) {
 		List<Long> medicionesPorClave = mediciones.get(clave);
 
 		if (medicionesPorClave == null) {
@@ -32,7 +32,7 @@ public class Cronometro {
 		mediciones.put(clave, medicionesPorClave);
 	}
 
-	public Mediciones getMediciones(String clave) {
+	public Mediciones getMediciones(final String clave) {
 		return procesar(clave);
 	}
 
@@ -40,7 +40,8 @@ public class Cronometro {
 		return getMediciones(ANONIMO);
 	}
 
-	private Mediciones procesar(String key) {
-		return new Mediciones(mediciones.get(key), this.precision);
+	private Mediciones procesar(final String clave) {
+		// TODO: considerar el caso de 1 sola medicion.
+		return new Mediciones(mediciones.get(clave), this.precision);
 	}
 }

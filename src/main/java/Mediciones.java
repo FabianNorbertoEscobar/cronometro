@@ -5,11 +5,13 @@ public class Mediciones {
 
 	private List<Double> valores;
 	private Double total;
+	private Precision precision;
 
-	public Mediciones(List<Long> capturas, Precision precision) {
-		Long previo = null;
+	public Mediciones(final List<Long> capturas, final Precision precision) {
+		this.precision = precision;
 		this.valores = new LinkedList<Double>();
 
+		Long previo = null;
 		for (Long medicion : capturas) {
 			if (previo != null) {
 				valores.add(precision.desdeNano(medicion - previo));
@@ -20,7 +22,7 @@ public class Mediciones {
 		this.total = (double) previo - capturas.get(0);
 	}
 
-	public double get(int indice) {
+	public double get(final int indice) {
 		return this.valores.get(indice);
 	}
 

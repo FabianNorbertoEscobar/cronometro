@@ -5,19 +5,19 @@ public enum Precision {
 	MICROSEGUNDOS((long) 1_000, "µs"),
 	NANOSEGUNDOS((long) 1, "ns");
 
-	Long factor;
-	String simbolo;
+	private Long factor;
+	private String simbolo;
 
-	Precision(Long factor, String simbolo) {
+	Precision(final Long factor, final String simbolo) {
 		this.factor = factor;
 		this.simbolo = simbolo;
 	}
 
-	public Double desdeNano(long nano) {
+	public Double desdeNano(final long nano) {
 		return (((double) (nano)) / this.factor);
 	}
 
-	public String formatear(long cantidad) {
+	public String formatear(final long cantidad) {
 		return cantidad + " " + this.simbolo;
 	}
 }
