@@ -1,6 +1,11 @@
+package edu.unlam.progra.crono;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import edu.unlam.progra.crono.Cronometro;
+import edu.unlam.progra.crono.Mediciones;
+import edu.unlam.progra.crono.Precision;
 
 public class CronometroTests {
 

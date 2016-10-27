@@ -1,5 +1,8 @@
+package edu.unlam.progra.crono;
 import org.junit.Assert;
 import org.junit.Test;
+
+import edu.unlam.progra.crono.Precision;
 
 public class PrecisionTests {
 

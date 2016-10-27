@@ -1,3 +1,4 @@
+package edu.unlam.progra.crono;
 public enum Precision {
 
 	SEGUNDOS((long) 1_000_000_000, "s"),
