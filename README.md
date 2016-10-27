@@ -7,6 +7,7 @@
 ## Ejemplos de uso
 
 ```java
+Cronometro crono = new Cronometro(Precision.SEGUNDOS);
 crono.clic("burbujeo");
 arreglo.ordenarPorBurbujeo();
 crono.clic("burbujeo");
