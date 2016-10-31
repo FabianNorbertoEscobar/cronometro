@@ -6,7 +6,7 @@ apply plugin: 'checkstyle'
 // Configuración
 
 sourceCompatibility = 1.7
-version = '0.1'
+version = '0.2'
 test.ignoreFailures = true
 
 defaultTasks 'clean', 'compileJava', 'test', 'cobertura', 'checkstyleMain', 'pmd'
@@ -29,7 +29,7 @@ sourceSets {
 dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile 'junit:junit:4.+'
-    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.2.1'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.3'
     pmdConf group: 'pmd', name: 'pmd', version: '4.3'
 
     acceptanceTestCompile sourceSets.main.output
@@ -94,7 +94,7 @@ task pmd (dependsOn: compileJava) << {
                     include(name: '**/*.java')
                 }
         }
-        cpd(minimumTokenCount: 30, format: 'xml',
+        cpd(minimumTokenCount: 20, format: 'xml',
             ignoreLiterals: 'true',
             ignoreIdentifiers: 'true',
             outputFile: 'build/reports/pmd-cpd/cpd.xml') {

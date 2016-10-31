@@ -26,8 +26,8 @@ public class CronometroTests {
 		crono.clic();
 
 		Mediciones mediciones = crono.getMediciones();
-		assertMedicionesMayoresQue(new double[] { 1.0 }, mediciones);
-		assertMedicionTotalMayorQue(1.0, mediciones);
+		assertMedicionesConDesviosMenoresAUnoPorciento(new double[] { 1.0 }, mediciones);
+		assertMedicionConDesvioMenorAUnoPorciento(1.0, mediciones);
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class CronometroTests {
 		crono.clic();
 
 		Mediciones mediciones = crono.getMediciones();
-		assertMedicionesMayoresQue(new double[] { 1.0, 0.5 }, mediciones);
+		assertMedicionesConDesviosMenoresAUnoPorciento(new double[] { 1.0, 0.5 }, mediciones);
 	}
 
 	@Test
@@ -58,10 +58,10 @@ public class CronometroTests {
 		crono.clic(PROCESO_UNO);
 
 		Mediciones mediciones = crono.getMediciones(PROCESO_UNO);
-		assertMedicionesMayoresQue(new double[] { 1.0, 1.0 }, mediciones);
+		assertMedicionesConDesviosMenoresAUnoPorciento(new double[] { 1.0, 2.0 }, mediciones);
 
 		mediciones = crono.getMediciones(PROCESO_DOS);
-		assertMedicionesMayoresQue(new double[] { 0.5, 1.0 }, mediciones);
+		assertMedicionesConDesviosMenoresAUnoPorciento(new double[] { 0.5, 1.0 }, mediciones);
 	}
 
 	@Test
@@ -74,21 +74,21 @@ public class CronometroTests {
 		crono.clic(PROCESO_UNO);
 
 		Mediciones mediciones = crono.getMediciones(PROCESO_UNO);
-		assertMedicionTotalMayorQue(1.5, mediciones);
+		assertMedicionConDesvioMenorAUnoPorciento(1.5, mediciones);
 	}
 
 	private void simularProcesoDeXMilisegundos(long milisegundos) throws InterruptedException {
 		Thread.sleep(milisegundos);
 	}
 
-	private void assertMedicionesMayoresQue(double[] minimos, Mediciones mediciones) {
+	private void assertMedicionesConDesviosMenoresAUnoPorciento(double[] minimos, Mediciones mediciones) {
 		for (int indice = 0; indice < minimos.length; indice++) {
 			double actual = minimos[indice];
-			Assert.assertTrue(mediciones.get(indice) >= actual);
+			Assert.assertEquals(mediciones.get(indice), actual, 0.01);
 		}
 	}
 
-	private void assertMedicionTotalMayorQue(double minimo, Mediciones mediciones) {
-		Assert.assertTrue(mediciones.getTotal() >= minimo);
+	private void assertMedicionConDesvioMenorAUnoPorciento(double minimo, Mediciones mediciones) {
+		Assert.assertEquals(minimo, mediciones.getTotal(), 0.01);
 	}
 }

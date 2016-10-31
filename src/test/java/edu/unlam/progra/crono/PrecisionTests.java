@@ -25,9 +25,9 @@ public class PrecisionTests {
 
 	@Test
 	public void formato() {
-		Assert.assertEquals("1 s", Precision.SEGUNDOS.formatear(1));
-		Assert.assertEquals("1 µs", Precision.MICROSEGUNDOS.formatear(1));
-		Assert.assertEquals("1 ms", Precision.MILISEGUNDOS.formatear(1));
-		Assert.assertEquals("1 ns", Precision.NANOSEGUNDOS.formatear(1));
+		Assert.assertEquals("1.000 s", Precision.SEGUNDOS.formatear(1));
+		Assert.assertEquals("1.000 µs", Precision.MICROSEGUNDOS.formatear(1));
+		Assert.assertEquals("1.000 ms", Precision.MILISEGUNDOS.formatear(1));
+		Assert.assertEquals("1.000 ns", Precision.NANOSEGUNDOS.formatear(1));
 	}
 }

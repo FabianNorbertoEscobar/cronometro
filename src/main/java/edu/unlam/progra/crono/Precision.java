@@ -1,4 +1,7 @@
 package edu.unlam.progra.crono;
+
+import java.text.DecimalFormat;
+
 public enum Precision {
 
 	SEGUNDOS((long) 1_000_000_000, "s"),
@@ -18,7 +21,8 @@ public enum Precision {
 		return (((double) (nano)) / this.factor);
 	}
 
-	public String formatear(final long cantidad) {
-		return cantidad + " " + this.simbolo;
+	public String formatear(final double d) {
+		DecimalFormat df = new DecimalFormat("0.000");
+		return df.format(d) + " " + this.simbolo;
 	}
 }

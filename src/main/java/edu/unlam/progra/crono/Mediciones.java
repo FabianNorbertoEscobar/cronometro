@@ -20,7 +20,7 @@ public class Mediciones {
 			previo = medicion;
 		}
 
-		this.total = (double) previo - capturas.get(0);
+		this.total = (double) precision.desdeNano(previo - capturas.get(0));
 	}
 
 	public double get(final int indice) {
@@ -29,5 +29,13 @@ public class Mediciones {
 
 	public Double getTotal() {
 		return this.total;
+	}
+
+	public List<Double> getCrudos() {
+		return this.valores;
+	}
+
+	public Precision getPrecision() {
+		return this.precision;
 	}
 }

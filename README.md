@@ -16,8 +16,11 @@ crono.clic("insercion");
 arreglo.ordenarPorInsercion();
 crono.clic("insercion");
 
-System.out.println(crono.getMediciones("burbujeo").getTotal());
-System.out.println(crono.getMediciones("insercion").getTotal());
+PresentadorDeTiemposPromedio presentador = new PresentadorDeTiemposPromedio(crono.getMediciones("burbujeo"));
+System.out.println(presentador);
+
+presentador = new PresentadorDeTiemposPromedio(crono.getMediciones("insercion"));
+System.out.println(presentador);
 ```
 
 ## Contribuciones
