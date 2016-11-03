@@ -1,4 +1,5 @@
 package edu.unlam.progra.crono;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,9 +31,13 @@ public class Mediciones {
 	public Double getTotal() {
 		return this.total;
 	}
+	
+	public int getCantidad() {
+		return this.valores.size();
+	}
 
-	public List<Double> getCrudos() {
-		return this.valores;
+	public Iterator<Double> iterator() {
+		return this.valores.iterator();
 	}
 
 	public Precision getPrecision() {

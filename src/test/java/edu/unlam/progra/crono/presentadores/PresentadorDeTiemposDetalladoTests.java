@@ -6,10 +6,11 @@ import org.junit.Test;
 
 import edu.unlam.progra.crono.AuxiliaresDeTesting;
 import edu.unlam.progra.crono.Cronometro;
+import edu.unlam.progra.crono.Mediciones;
 import edu.unlam.progra.crono.Precision;
 
 
-public class PresentadorDeTiemposPromedioTests extends AuxiliaresDeTesting {
+public class PresentadorDeTiemposDetalladoTests extends AuxiliaresDeTesting {
 
 	private Cronometro crono;
 
@@ -27,9 +28,9 @@ public class PresentadorDeTiemposPromedioTests extends AuxiliaresDeTesting {
 		simularProcesoDeXMilisegundos(50);
 		crono.clic();
 
-		PresentadorDeTiemposPromedio presentador = new PresentadorDeTiemposPromedio(crono.getMediciones());
-		Assert.assertTrue(presentador.getResultado() >= 0.075);
-		Assert.assertTrue(presentador.toString().matches("\\d\\.\\d{3} s"));
+		PresentadorDeTiemposDetallado presentador = new PresentadorDeTiemposDetallado(crono.getMediciones());
+		assertResultadosConDesviosMenoresAUnoPorciento(new double[] { 0.1, 0.05 }, presentador.getResultados());
+		Assert.assertTrue(presentador.toString().matches("\\d\\.\\d{3} s\n\\d\\.\\d{3} s"));
 
 	}
 }

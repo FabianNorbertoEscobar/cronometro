@@ -1,22 +1,18 @@
 package edu.unlam.progra.crono.presentadores;
 
-import java.util.List;
-
 import edu.unlam.progra.crono.Mediciones;
 
-public class PresentadorDeTiemposPromedio {
+public class PresentadorDeTiemposPromedio extends PresentadorDeTiempos {
 
-	private Mediciones mediciones;
-
-	public PresentadorDeTiemposPromedio(final Mediciones mediciones) {
-		this.mediciones = mediciones;
+	public PresentadorDeTiemposPromedio(Mediciones mediciones) {
+		super(mediciones);
 	}
 
 	public double getResultado() {
-		List<Double> crudos = this.mediciones.getCrudos();
-		return this.mediciones.getTotal() / crudos.size();
+		return this.mediciones.getTotal() / this.mediciones.getCantidad();
 	}
 
+	@Override
 	public String toString() {
 		return this.mediciones.getPrecision().formatear(getResultado());
 	}

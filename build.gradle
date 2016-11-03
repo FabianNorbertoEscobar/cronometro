@@ -6,7 +6,7 @@ apply plugin: 'checkstyle'
 // Configuración
 
 sourceCompatibility = 1.7
-version = '0.2'
+version = '0.3'
 test.ignoreFailures = true
 
 defaultTasks 'clean', 'compileJava', 'test', 'cobertura', 'checkstyleMain', 'pmd'
